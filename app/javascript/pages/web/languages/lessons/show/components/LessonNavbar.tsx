@@ -1,4 +1,10 @@
-import { AppShell, ScrollArea, Tabs } from '@mantine/core';
+import {
+  AppShell,
+  Box,
+  ScrollArea,
+  Tabs,
+  useMantineTheme,
+} from '@mantine/core';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AssistantTabContent from '@/pages/web/languages/lessons/show/components/AssistantTabContent.tsx';
@@ -8,6 +14,9 @@ import NavigationTabContent from '@/pages/web/languages/lessons/show/components/
 export default function LessonNavbar() {
   const { t } = useTranslation();
   const [focusesCount, setFocusCount] = useState(0);
+  const theme = useMantineTheme();
+  const headerHeight =
+    theme.components?.AppShell?.defaultProps?.header?.height ?? 60;
 
   const handleSelect = (selectedKey: string | null) => {
     if (selectedKey === 'assistant') {
@@ -16,13 +25,11 @@ export default function LessonNavbar() {
   };
 
   return (
-    <AppShell.Navbar>
+    <Box h="100%" pt={headerHeight}>
       <Tabs
         defaultValue="lesson"
         onChange={handleSelect}
-        h="100%"
-        display="flex"
-        style={{ flexDirection: 'column' }}
+        style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         <Tabs.List grow>
           <Tabs.Tab value="lesson">
@@ -56,6 +63,6 @@ export default function LessonNavbar() {
           </Tabs.Panel>
         </AppShell.Section>
       </Tabs>
-    </AppShell.Navbar>
+    </Box>
   );
 }

@@ -1,4 +1,12 @@
-import { AppShell, Box, Center, ScrollArea, Stack, Tabs } from '@mantine/core';
+import {
+  AppShell,
+  Box,
+  Center,
+  ScrollArea,
+  Stack,
+  Tabs,
+  useMantineTheme,
+} from '@mantine/core';
 import { BookOpenText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useLessonStore } from '../store.tsx';
@@ -14,13 +22,14 @@ export default function LessonMainContent() {
   const { t } = useTranslation();
   const changeTab = useLessonStore((state) => state.changeTab);
   const currentTab = useLessonStore((state) => state.currentTab);
+  const theme = useMantineTheme();
+  const headerHeight =
+    theme.components?.AppShell?.defaultProps?.header?.height ?? 60;
 
   return (
-    <AppShell.Main h="100%">
+    <Box h="100%" style={{ paddingTop: headerHeight }}>
       <Tabs
-        h="100%"
-        display="flex"
-        style={{ flexDirection: 'column' }}
+        style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
         value={currentTab}
         onChange={(key) => changeTab(key as typeof currentTab)}
         // keepMounted={false}
@@ -102,6 +111,6 @@ export default function LessonMainContent() {
           </Tabs.Panel>
         </AppShell.Section>
       </Tabs>
-    </AppShell.Main>
+    </Box>
   );
 }
