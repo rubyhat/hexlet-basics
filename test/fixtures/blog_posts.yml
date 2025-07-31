@@ -35,7 +35,7 @@ from-full:
   <<: *DEFAULTS
   name: Что такое язык программирования $LABEL. Очень длинное название
   body: |
-    <%= Faker::Lorem.paragraph_by_chars %>
+    <%= Faker::Lorem.paragraph_by_chars(number: 4000)  %>
     ::courses
   description: |
     <%= Faker::Lorem.paragraph(sentence_count: 4) %>
@@ -44,7 +44,8 @@ from-full:
 from-full-ru:
   <<: *DEFAULTS
   body: |
-    DRAFT
+   <%= Faker::Lorem.paragraph_by_chars(number: 4000)  %>
+    ::courses
   description: |
     <%= Faker::Lorem.paragraph(sentence_count: 4) %>
     ::courses
@@ -54,7 +55,8 @@ from-full-ru:
 from-full-en:
   <<: *DEFAULTS
   body: |
-    DRAFT
+    <%= Faker::Lorem.paragraph_by_chars(number: 4000)  %>
+    ::courses
   name: What is $LABEL
   description: |
     <%= Faker::Lorem.paragraph(sentence_count: 4) %>
@@ -70,6 +72,8 @@ from-full-js:
   body: |
     <%= Faker::Markdown.headers %>
     <%= Faker::Markdown.emphasis %>
+
+    <%= Faker::Lorem.paragraph_by_chars(number: 4000)  %>
 
     ## Header 2
 
@@ -93,7 +97,8 @@ from-full-js:
 from-full-ru-js:
   <<: *DEFAULTS
   body: |
-    <%= Faker::Lorem.paragraph_by_chars %>
+    <%= Faker::Lorem.paragraph_by_chars(number: 4000)  %>
+    ::courses
   description: |
     <%= Faker::Lorem.paragraph(sentence_count: 4) %>
   language: javascript
@@ -106,6 +111,7 @@ from-full-en-js:
     <%= Faker::Lorem.paragraph(sentence_count: 4) %>
   body: |
     ## Header 2
+    <%= Faker::Lorem.paragraph_by_chars(number: 4000)  %>
     <%= Faker::Lorem.paragraph_by_chars %>
     ## Header 3
     <%= Faker::Lorem.paragraph_by_chars %>
@@ -119,7 +125,7 @@ from-full-en-js:
 from-full-php:
   <<: *DEFAULTS
   body: |
-    <%= Faker::Lorem.paragraph_by_chars %>
+    <%= Faker::Lorem.paragraph_by_chars(number: 4000)  %>
     ::courses
   description: |
     <%= Faker::Lorem.paragraph(sentence_count: 4) %>
@@ -129,7 +135,7 @@ from-full-php:
 from-full-ru-php:
   <<: *DEFAULTS
   body: |
-    Эта статья посвящена языку PHP. Давайте говорить про него и посмотрим какие курсы порекомендуют здесь.
+    <%= Faker::Lorem.paragraph_by_chars(number: 4000)  %>
     ::courses
   description: |
     <%= Faker::Lorem.paragraph(sentence_count: 4) %>
@@ -141,7 +147,7 @@ from-full-en-php:
   <<: *DEFAULTS
   name: What is $LABEL
   body: |
-    <%= Faker::Lorem.paragraph_by_chars %>
+    <%= Faker::Lorem.paragraph_by_chars(number: 4000)  %>
   description: |
     <%= Faker::Lorem.paragraph(sentence_count: 4) %>
   language: php

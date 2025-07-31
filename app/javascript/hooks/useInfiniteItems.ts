@@ -20,7 +20,7 @@ export default function useInfiniteItems<T extends Item>(
 
   // Маркер подгрузки
   const { ref: markerRef, entry } = useIntersection({
-    threshold: 0.5,
+    threshold: 0.25,
     rootMargin: '0px 0px 20% 0px',
   });
 
@@ -63,7 +63,6 @@ export default function useInfiniteItems<T extends Item>(
           if (!entry.isIntersecting) return;
           const el = entry.target;
           const currentItem = itemMapRef.current.get(el);
-          console.log('jopA!!!');
           if (currentItem && currentItem.url !== activeUrlRef.current) {
             activeUrlRef.current = currentItem.url;
             window.history.replaceState({}, '', currentItem.url);
